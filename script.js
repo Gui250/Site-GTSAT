@@ -45,7 +45,7 @@ if (calm) {
   }, 1800);
 }
 
-// Orçamento: monta a mensagem e abre o WhatsApp
+// Reserva: monta a mensagem e abre o WhatsApp
 const form = document.querySelector('.quote');
 form.addEventListener('submit', (ev) => {
   ev.preventDefault();
@@ -54,7 +54,7 @@ form.addEventListener('submit', (ev) => {
   const err = form.querySelector('.form-error');
   err.hidden = !!nome;
   if (!nome) return form.nome.focus();
-  const cidade = d.get('cidade').trim();
-  const msg = `Olá, sou ${nome}${cidade ? `, de ${cidade}` : ''}. Quero um orçamento de rastreador para: ${d.get('veiculo')}.`;
+  const bairro = d.get('bairro').trim();
+  const msg = `Olá, sou ${nome}${bairro ? `, do bairro ${bairro}` : ''}. Quero alugar uma moto no ${d.get('plano')}.`;
   open(`https://wa.me/557141410580?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 });
