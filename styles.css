@@ -62,7 +62,6 @@ a { color: inherit; }
   margin: 0 0 20px;
 }
 .mono { font-family: var(--mono); font-size: 12px; }
-.muted { color: #9a9596; }
 .lede { font-size: clamp(17px, 1.4vw, 19px); color: var(--ink-2); max-width: 46ch; margin: 28px 0 0; }
 
 /* ---------- botões com rolagem do rótulo (hover da referência) ---------- */
@@ -112,10 +111,10 @@ a { color: inherit; }
   grid-template-columns: 1.05fr 1fr;
   gap: clamp(32px, 5vw, 80px);
   align-items: center;
-  padding: clamp(40px, 7vw, 96px) var(--gutter) clamp(64px, 8vw, 120px);
+  padding: clamp(32px, 5vw, 72px) var(--gutter) clamp(64px, 8vw, 120px);
   max-width: 1440px; margin: 0 auto;
 }
-.hero-title { font-size: clamp(64px, 9.4vw, 148px); }
+.hero-title { font-size: clamp(44px, min(6.4vw, 10.5vh), 108px); }
 .hero-title .line { display: block; overflow: hidden; padding-bottom: .04em; }
 .hero-title .line > span { display: inline-block; }
 .js .hero-title .line > span {
@@ -130,42 +129,18 @@ a { color: inherit; }
 @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-/* painel de rastreamento: a assinatura da página */
-.tracker {
-  position: relative;
+/* vídeo da moto: fundo grafite do vídeo vira a própria moldura */
+.hero-media {
+  position: relative; margin: 0;
   background: var(--ink);
-  color: #fff;
   border-radius: var(--r-lg);
-  padding: 22px;
   box-shadow: 0 30px 60px -30px rgba(32, 30, 30, .55);
 }
-.tracker-head { display: flex; justify-content: space-between; align-items: center; padding: 0 6px 14px; }
-.live { display: inline-flex; align-items: center; gap: 8px; font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); animation: blink 1.4s steps(2) infinite; }
-@keyframes blink { 50% { opacity: .25; } }
-.map { width: 100%; height: auto; border-radius: 24px; background: #2a2727; }
-.streets path { fill: none; stroke: #3b3737; stroke-width: 12; stroke-linecap: round; }
-.street-label { font: 500 9px var(--mono); letter-spacing: .12em; fill: #8d8788; }
-.route {
-  fill: none; stroke: var(--signal); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round;
-  stroke-dasharray: 1; stroke-dashoffset: 1;
-  animation: draw 2.4s var(--ease) .5s forwards;
+.hero-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: inherit; }
+.hero-media figcaption {
+  position: absolute; left: 28px; bottom: 22px;
+  color: #fff; letter-spacing: .1em; text-transform: uppercase;
 }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-.stop { fill: #fff; }
-.dot { fill: var(--signal); stroke: #fff; stroke-width: 3; }
-.ping {
-  fill: var(--signal); opacity: 0;
-  transform-box: fill-box; transform-origin: center;
-  animation: ping 2.4s ease-out infinite;
-}
-.ping-late { animation-delay: 1.2s; }
-@keyframes ping { 0% { transform: scale(.4); opacity: .55; } 100% { transform: scale(2.6); opacity: 0; } }
-
-.telemetry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 0; padding: 0 6px; }
-.telemetry dt { font: 500 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #9a9596; }
-.telemetry dd { margin: 4px 0 0; font: 400 14px var(--mono); font-variant-numeric: tabular-nums; }
-.telemetry b { font-weight: 500; }
 
 .chip {
   position: absolute; margin: 0;
@@ -338,8 +313,6 @@ a { color: inherit; }
   .chip-b { right: 8px; bottom: -18px; }
   .card { grid-template-columns: 1fr; position: relative; top: auto; min-height: 0; gap: 28px; }
   .card-visual { padding: 28px 20px; }
-  .telemetry { grid-template-columns: 1fr 1fr; }
-  .telemetry div:nth-child(2) { grid-column: 1 / -1; order: 3; }
   .footer { grid-template-columns: 1fr; }
   .footer nav { flex-wrap: wrap; }
 }
@@ -352,5 +325,4 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
-  .ping { display: none; }
 }

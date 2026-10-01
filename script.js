@@ -27,23 +27,8 @@ function countUp(el) {
 const bar = document.querySelector('.topbar');
 addEventListener('scroll', () => bar.classList.toggle('scrolled', scrollY > 8), { passive: true });
 
-// Telemetria da demonstração: velocidade e posição variando perto da Av. Dom João VI
-const speeds = document.querySelectorAll('[data-speed]');
-const pos = document.querySelector('[data-pos]');
-const ago = document.querySelector('[data-ago]');
-let lat = -12.9927, lon = -38.4889;
-if (calm) {
-  document.querySelector('.map').pauseAnimations();
-} else {
-  setInterval(() => {
-    const v = 36 + Math.round(Math.random() * 22);
-    speeds.forEach((s) => (s.textContent = v));
-    lat += (Math.random() - 0.4) * 0.0004;
-    lon += (Math.random() - 0.4) * 0.0004;
-    pos.textContent = `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-    ago.textContent = 1 + Math.round(Math.random());
-  }, 1800);
-}
+// Sem movimento: o vídeo da hero fica parado no primeiro quadro
+if (calm) document.querySelector('.hero-media video').pause();
 
 // Reserva: monta a mensagem e abre o WhatsApp
 const form = document.querySelector('.quote');

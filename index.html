@@ -55,41 +55,13 @@
       </div>
     </div>
 
-    <div class="tracker" aria-label="Demonstração: moto alugada no rastreador">
-      <div class="tracker-head">
-        <span class="live"><i></i>Ao vivo</span>
-        <span class="mono muted">Moto alugada · Salvador, BA</span>
-      </div>
-
-      <svg class="map" viewBox="0 0 520 360" role="img" aria-label="Mapa com uma moto percorrendo a Av. Dom João VI, em Brotas">
-        <g class="streets">
-          <path d="M0 300H520"/><path d="M0 150H520"/><path d="M0 230H300"/>
-          <path d="M160 0V360"/><path d="M300 0V360"/><path d="M430 150V360"/>
-          <path d="M40 360L150 0"/><path d="M300 150L470 0"/><path d="M300 230L520 90"/>
-        </g>
-        <text class="street-label" x="176" y="140">AV. DOM JOÃO VI</text>
-        <text class="street-label" x="316" y="286">BROTAS</text>
-        <path id="route" class="route" pathLength="1" d="M30 300H160V150H300L440 26"/>
-        <circle class="stop" cx="30" cy="300" r="5"/>
-        <g class="vehicle">
-          <circle class="ping" r="16"/>
-          <circle class="ping ping-late" r="16"/>
-          <circle class="dot" r="7"/>
-          <animateMotion dur="16s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.88;1" calcMode="linear">
-            <mpath href="#route"/>
-          </animateMotion>
-        </g>
-      </svg>
-
-      <dl class="telemetry">
-        <div><dt>Velocidade</dt><dd><b data-speed>42</b> km/h</dd></div>
-        <div><dt>Posição</dt><dd data-pos>-12.9927, -38.4889</dd></div>
-        <div><dt>Atualizado</dt><dd>há <b data-ago>1</b> s</dd></div>
-      </dl>
-
+    <figure class="hero-media">
+      <video src="assets/crosser-360.mp4" poster="assets/crosser-360.jpg" autoplay muted loop playsinline preload="auto"
+        aria-label="Yamaha Crosser 150 girando 360 graus em frente à placa da GTSAT"></video>
+      <figcaption class="mono">Yamaha Crosser 150 · 360°</figcaption>
       <p class="chip chip-a"><i></i>Km livre</p>
       <p class="chip chip-b"><i class="ok"></i>Seguro incluso</p>
-    </div>
+    </figure>
   </section>
 
   <!-- MANIFESTO -->
