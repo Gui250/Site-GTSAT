@@ -175,8 +175,23 @@ a { color: inherit; }
 .panel { background: var(--paper); border-radius: var(--r-lg); padding: clamp(28px, 3.5vw, 44px); }
 .panel p:last-child { margin: 16px 0 0; color: var(--ink-2); }
 
+/* ---------- a moto: cabeçalho em duas colunas + três ângulos ---------- */
+.design-head {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px clamp(40px, 6vw, 96px); align-items: end;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.design-head > p { margin: 0; max-width: 58ch; color: var(--ink-2); font-size: clamp(16px, 1.25vw, 18px); }
+.angles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.angles figure { position: relative; margin: 0; overflow: hidden; border-radius: 28px; background: var(--ink); }
+.angles img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .8s var(--ease); }
+.angles figure:hover img { transform: scale(1.04); }
+.angles figcaption {
+  position: absolute; left: 24px; bottom: 20px;
+  color: #fff; letter-spacing: .1em; text-transform: uppercase;
+}
+
 /* ---------- seções ---------- */
-.features, .coverage, .faq { padding: clamp(80px, 10vw, 140px) var(--gutter); max-width: 1440px; margin: 0 auto; }
+.design, .features, .coverage, .faq { padding: clamp(80px, 10vw, 140px) var(--gutter); max-width: 1440px; margin: 0 auto; }
 .section-head { margin-bottom: clamp(40px, 5vw, 72px); }
 
 /* cartões empilhados: cada um gruda no topo e o próximo sobe por cima */
@@ -308,7 +323,15 @@ a { color: inherit; }
 @media (max-width: 810px) {
   .link-quiet { display: none; }
   .topbar { justify-content: space-between; }
-  .hero, .pair, .coverage, .faq, .closing-inner { grid-template-columns: 1fr; }
+  .hero, .pair, .coverage, .faq, .closing-inner, .design-head { grid-template-columns: 1fr; }
+  /* três ângulos viram carrossel com encaixe no celular */
+  .angles {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); scroll-padding: 0 var(--gutter);
+  }
+  .angles::-webkit-scrollbar { display: none; }
+  .angles figure { scroll-snap-align: start; }
   .chip-a { left: 8px; top: 56px; }
   .chip-b { right: 8px; bottom: -18px; }
   .card { grid-template-columns: 1fr; position: relative; top: auto; min-height: 0; gap: 28px; }
