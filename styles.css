@@ -190,6 +190,25 @@ a { color: inherit; }
   color: #fff; letter-spacing: .1em; text-transform: uppercase;
 }
 
+/* hodômetro 0 km: cada roda gira até o zero quando a faixa entra na tela */
+.odo {
+  display: grid; grid-template-columns: auto 1fr; gap: 24px clamp(32px, 5vw, 72px); align-items: center;
+  margin-top: 16px; padding: clamp(28px, 4vw, 56px);
+  background: var(--ink); color: #fff; border-radius: 28px;
+}
+.odo > div p { margin: 16px 0 0; max-width: 44ch; color: #cfcbcb; }
+.odo-dial { display: flex; align-items: flex-end; gap: 6px; margin: 0; font: 800 clamp(48px, 9vw, 128px)/1 var(--display); }
+.odo-dial span { width: .62em; height: 1em; overflow: hidden; text-align: center; background: var(--ink-2); border-radius: 8px; }
+.odo-dial span:nth-last-of-type(1) { background: var(--signal-ink); }
+.odo-dial span::before {
+  content: "9\A 8\A 7\A 6\A 5\A 4\A 3\A 2\A 1\A 0";
+  display: block; white-space: pre;
+  transform: translateY(-9em);
+  transition: transform 1.6s var(--ease) calc(300ms + var(--i) * 110ms);
+}
+.js .odo:not(.in) .odo-dial span::before { transform: translateY(calc((var(--s) - 9) * 1em)); }
+.odo-dial small { margin-left: 8px; font: 500 14px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #9a9596; }
+
 /* ---------- seções ---------- */
 .design, .features, .coverage, .faq { padding: clamp(80px, 10vw, 140px) var(--gutter); max-width: 1440px; margin: 0 auto; }
 .section-head { margin-bottom: clamp(40px, 5vw, 72px); }
@@ -323,7 +342,7 @@ a { color: inherit; }
 @media (max-width: 810px) {
   .link-quiet { display: none; }
   .topbar { justify-content: space-between; }
-  .hero, .pair, .coverage, .faq, .closing-inner, .design-head { grid-template-columns: 1fr; }
+  .hero, .pair, .coverage, .faq, .closing-inner, .design-head, .odo { grid-template-columns: 1fr; }
   /* três ângulos viram carrossel com encaixe no celular */
   .angles {
     grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;
